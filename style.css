@@ -97,7 +97,13 @@ nav ul li a {
     overflow: hidden;
 }
 
-
+/* Active page highlight using aria-current */
+nav ul li a[aria-current="page"] {
+  background: rgba(0, 255, 225, 0.22);
+  border-color: rgba(0, 255, 225, 0.55);
+  color: #00ffe1;
+  box-shadow: 0 8px 25px rgba(0, 255, 225, 0.22);
+}
 
 nav ul li a:hover::before {
     left: 100%;
