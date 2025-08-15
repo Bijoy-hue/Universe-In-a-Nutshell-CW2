@@ -133,6 +133,64 @@ if (window.jQuery) {
     document.querySelectorAll('.card-caption').forEach(el => el.remove());
   }
 
+  // Mission section: staggered reveal for mission cards
+  const missionCards = document.querySelectorAll('.mission-grid .mission-card');
+  if (missionCards && missionCards.length) {
+    missionCards.forEach((card, idx) => {
+      // Add slight stagger only for users not preferring reduced motion
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced) {
+        card.style.transitionDelay = `${Math.min(idx * 120, 360)}ms`;
+      }
+    });
+  }
+
+  // Mission metrics: count-up animation when metrics strip enters viewport
+  const metricsStrip = document.querySelector('.mission-metrics');
+  if (metricsStrip) {
+    const values = Array.from(metricsStrip.querySelectorAll('.metric-value'));
+    let hasRun = false;
+
+    // Format numbers with grouping (e.g., 12,000)
+    const formatNumber = (num) => new Intl.NumberFormat(undefined).format(Math.round(num));
+
+    const animateCount = (el, target, duration = 1200) => {
+      const start = 0;
+      const startTime = performance.now();
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        el.textContent = formatNumber(target);
+        return;
+      }
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        const eased = easeOutCubic(progress);
+        const current = start + (target - start) * eased;
+        el.textContent = formatNumber(current);
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const metricObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasRun) {
+          hasRun = true;
+          values.forEach((el, i) => {
+            const target = parseInt(el.getAttribute('data-count') || '0', 10);
+            // small per-item stagger
+            setTimeout(() => animateCount(el, target), i * 120);
+          });
+          metricObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    metricObserver.observe(metricsStrip);
+  }
+
   // Fun Facts Slider
   const slides = document.querySelectorAll('.fun-fact-slide');
   const prevBtn = document.querySelector('.fun-facts-prev');
