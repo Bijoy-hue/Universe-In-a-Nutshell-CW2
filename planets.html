@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar System - Planet Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Page-specific light additions (kept minimal to reuse style.css) */
+    .planet-details-page {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 16px 48px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #00ffe1;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(0,255,225,0.35);
+      padding: 8px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0.35);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .back-link:hover { transform: translateY(-2px); background: rgba(0,0,0,0.5); }
+
+    .page-title {
+      font-family: 'Space Grotesk','Inter',sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 16px 0 8px;
+      color: #ff4444;
+      text-shadow: 0 0 12px rgba(255,68,68,.45);
+    }
+    .page-subtitle {
+      text-align: center;
+      color: #e0e7ff;
+      margin-bottom: 28px;
+    }
+
+    .planet-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .planet-card {
+      background: rgba(10,10,20,0.7);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .planet-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(0,150,255,.4); }
+    .planet-card header { padding: 14px 16px 8px; }
+    .planet-name { font-weight: 700; font-size: 1.2rem; letter-spacing: .3px; }
+    .planet-meta { font-size: .9rem; color: #9ecfff; margin-top: 2px; }
+    .planet-body { padding: 0 16px 16px; color: #f1f5f9; line-height: 1.5; }
+    .facts { margin-top: 8px; font-size: .95rem; color: #cde9ff; }
+    .facts li { margin: 4px 0; }
+
+    /* Inline planet images */
+    .planet-media { width: 100%; overflow: hidden; }
+    .planet-media img { width: 100%; height: 180px; object-fit: cover; display: block; border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+    .toc {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0 26px;
+    }
+    .toc a { color: #fff; text-decoration: none; font-size: .95rem; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+    .toc a:hover { background: rgba(0,150,255,0.2); border-color: rgba(0,150,255,0.35); }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html#overview">Overview</a></li>
+        <li><a href="index.html#interactive-cards">Interactive</a></li>
+        <li><a href="index.html#planets">Back to Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="planet-details-page fade-in visible">
+    <a class="back-link" href="index.html#planets">⬅ Back to Home</a>
+    <h1 class="page-title">Solar System Planets</h1>
+    <p class="page-subtitle">Quick facts about the eight planets orbiting our Sun.</p>
+
+    <div class="toc">
+      <a href="#mercury">Mercury</a>
+      <a href="#venus">Venus</a>
+      <a href="#earth">Earth</a>
+      <a href="#mars">Mars</a>
+      <a href="#jupiter">Jupiter</a>
+      <a href="#saturn">Saturn</a>
+      <a href="#uranus">Uranus</a>
+      <a href="#neptune">Neptune</a>
+    </div>
+
+    <section class="planet-cards">
+      <article id="mercury" class="planet-card">
+        <header>
+          <h2 class="planet-name">Mercury</h2>
+          <div class="planet-meta">Smallest • Innermost</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/mercury.jpg" alt="Mercury" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The closest planet to the Sun with extreme temperature swings and a cratered, Moon-like surface.
+          <ul class="facts">
+            <li>Average distance from Sun: ~58 million km</li>
+            <li>Day length: 59 Earth days • Year length: 88 Earth days</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="venus" class="planet-card">
+        <header>
+          <h2 class="planet-name">Venus</h2>
+          <div class="planet-meta">Earth's Twin • Runaway Greenhouse</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/venus.jpg" alt="Venus" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Similar in size to Earth but with a thick, toxic atmosphere and surface temperatures hot enough to melt lead.
+          <ul class="facts">
+            <li>Thick CO₂ atmosphere and sulfuric acid clouds</li>
+            <li>Retrograde rotation (spins opposite most planets)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="earth" class="planet-card">
+        <header>
+          <h2 class="planet-name">Earth</h2>
+          <div class="planet-meta">Our Home • Liquid Water</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/earth.jpg" alt="Earth" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The only known world to harbor life, with a protective atmosphere and abundant liquid water.
+          <ul class="facts">
+            <li>1 Moon • Diverse climates and biosphere</li>
+            <li>Atmosphere: Nitrogen-Oxygen dominated</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="mars" class="planet-card">
+        <header>
+          <h2 class="planet-name">Mars</h2>
+          <div class="planet-meta">The Red Planet</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/mars.jpg" alt="Mars" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A cold desert world with the largest volcano and canyon in the solar system and evidence of past water.
+          <ul class="facts">
+            <li>Moons: Phobos & Deimos</li>
+            <li>Explored by multiple rovers and orbiters</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="jupiter" class="planet-card">
+        <header>
+          <h2 class="planet-name">Jupiter</h2>
+          <div class="planet-meta">Gas Giant • Great Red Spot</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/jupiter.jpg" alt="Jupiter" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The largest planet with powerful storms and dozens of moons including the volcanic Io and icy Europa.
+          <ul class="facts">
+            <li>Diameter: ~143,000 km • Strong magnetic field</li>
+            <li>At least 95 moons confirmed</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="saturn" class="planet-card">
+        <header>
+          <h2 class="planet-name">Saturn</h2>
+          <div class="planet-meta">Iconic Rings • Gas Giant</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/saturn.jpg" alt="Saturn" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Known for its stunning ring system; home to Titan, a moon with thick atmosphere and liquid methane lakes.
+          <ul class="facts">
+            <li>Rings: Ice and rock particles</li>
+            <li>Moons: 146 confirmed (incl. Titan & Enceladus)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="uranus" class="planet-card">
+        <header>
+          <h2 class="planet-name">Uranus</h2>
+          <div class="planet-meta">Ice Giant • Tilted Axis</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/uranus.jpg" alt="Uranus" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          An ice giant that rotates on its side, likely due to a massive ancient collision, with a pale blue hue from methane.
+          <ul class="facts">
+            <li>Axial tilt ~98° (spins on its side)</li>
+            <li>Faint rings and many moons</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="neptune" class="planet-card">
+        <header>
+          <h2 class="planet-name">Neptune</h2>
+          <div class="planet-meta">Ice Giant • Supersonic Winds</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/neptune.jpg" alt="Neptune" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The most distant known planet; deep blue with extreme winds and the large moon Triton.
+          <ul class="facts">
+            <li>Orbital period: 165 Earth years</li>
+            <li>Discovered in 1846 via mathematical prediction</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <h2 id="stars" class="page-title" style="margin-top: 36px;">Famous Stars</h2>
+    <p class="page-subtitle">Iconic stars you may have heard of — explained simply.</p>
+
+    <div class="toc">
+      <a href="#sun">Sun</a>
+      <a href="#sirius">Sirius</a>
+      <a href="#betelgeuse">Betelgeuse</a>
+      <a href="#rigel">Rigel</a>
+      <a href="#polaris">Polaris</a>
+      <a href="#vega">Vega</a>
+    </div>
+
+    <section class="planet-cards">
+      <article id="sun" class="planet-card">
+        <header>
+          <h2 class="planet-name">Sun</h2>
+          <div class="planet-meta">Our Star • Life-Giver</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/star.jpg" alt="The Sun" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The Sun is a medium-sized star that powers life on Earth by constantly fusing hydrogen into helium.
+          <ul class="facts">
+            <li>It’s 1.3 million Earths in volume — yet an average star by cosmic standards.</li>
+            <li>Sunlight you feel today left the Sun about 8 minutes ago.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="sirius" class="planet-card">
+        <header>
+          <h2 class="planet-name">Sirius</h2>
+          <div class="planet-meta">Dog Star • Brightest in Night Sky</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/sirius.jpg" alt="Sirius A and white dwarf companion" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The brightest star we see from Earth (after the Sun). It’s actually a pair: Sirius A and a faint white dwarf, Sirius B.
+          <ul class="facts">
+            <li>About 8.6 light-years away — relatively close neighbors.</li>
+            <li>So bright because it’s both luminous and nearby.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="betelgeuse" class="planet-card">
+        <header>
+          <h2 class="planet-name">Betelgeuse</h2>
+          <div class="planet-meta">Red Supergiant • Shoulder of Orion</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/betelgeuse.jpg" alt="Betelgeuse red supergiant" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A colossal, cool star nearing the end of its life. It’s so big that if it replaced our Sun, it could stretch past Jupiter.
+          <ul class="facts">
+            <li>Known for its orangey-red glow in the Orion constellation.</li>
+            <li>Will one day explode as a supernova — spectacular, but not dangerous to us.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="rigel" class="planet-card">
+        <header>
+          <h2 class="planet-name">Rigel</h2>
+          <div class="planet-meta">Blue Supergiant • Foot of Orion</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/rigel.jpg" alt="Rigel blue supergiant" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A hot, very luminous blue star. Though much farther than Betelgeuse, it still looks bright because it shines intensely.
+          <ul class="facts">
+            <li>Type: Blue supergiant — much hotter than our Sun.</li>
+            <li>Helps outline the famous Orion constellation with Betelgeuse.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="polaris" class="planet-card">
+        <header>
+          <h2 class="planet-name">Polaris</h2>
+          <div class="planet-meta">North Star • Sky Compass</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/polaris.jpg" alt="Polaris North Star" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Located almost directly above Earth’s North Pole, it appears fixed in the sky, helping navigators find north.
+          <ul class="facts">
+            <li>Not the brightest star, but very useful for direction.</li>
+            <li>Actually a small system of multiple stars.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="vega" class="planet-card">
+        <header>
+          <h2 class="planet-name">Vega</h2>
+          <div class="planet-meta">Summer Star • Calibration Standard</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/stars-galaxy-3840x2160-10307.jpg" alt="Vega blue-white star in Lyra" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A bright blue-white star in the Lyra constellation; historically used as a standard for star brightness.
+          <ul class="facts">
+            <li>Part of the Summer Triangle with Altair and Deneb.</li>
+            <li>Only ~25 light-years away — a nearby, photogenic neighbor.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="astronomy-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Universe in a Nutshell. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
+</body>
+</html>

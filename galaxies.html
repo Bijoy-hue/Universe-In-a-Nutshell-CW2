@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxies & Nebulae • Universe in a Nutshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
+  <style>
+    /* Match the details layout used on planets.html */
+    .planet-details-page { max-width: 1100px; margin: 32px auto; padding: 0 16px 48px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00ffe1; text-decoration: none; font-weight: 600; border: 1px solid rgba(0,255,225,0.35); padding: 8px 14px; border-radius: 999px; backdrop-filter: blur(6px); background: rgba(0,0,0,0.35); transition: transform .2s ease, background .2s ease; }
+    .back-link:hover { transform: translateY(-2px); background: rgba(0,0,0,0.5); }
+    .page-title { font-family: 'Space Grotesk','Inter',sans-serif; font-size: 2.2rem; font-weight: 700; text-align: center; margin: 16px 0 8px; color: #ff4444; text-shadow: 0 0 12px rgba(255,68,68,.45); }
+    .page-subtitle { text-align: center; color: #e0e7ff; margin-bottom: 28px; }
+    .planet-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .planet-card { background: rgba(10,10,20,0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .planet-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(0,150,255,.4); }
+    .planet-card header { padding: 14px 16px 8px; }
+    .planet-name { font-weight: 700; font-size: 1.2rem; letter-spacing: .3px; }
+    .planet-meta { font-size: .9rem; color: #9ecfff; margin-top: 2px; }
+    .planet-body { padding: 0 16px 16px; color: #f1f5f9; line-height: 1.5; }
+    .facts { margin-top: 8px; font-size: .95rem; color: #cde9ff; }
+    .facts li { margin: 4px 0; }
+    /* Inline galaxy images */
+    .planet-media { width: 100%; overflow: hidden; }
+    .planet-media img { width: 100%; height: 180px; object-fit: cover; display: block; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0 26px; }
+    .toc a { color: #fff; text-decoration: none; font-size: .95rem; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+    .toc a:hover { background: rgba(0,150,255,0.2); border-color: rgba(0,150,255,0.35); }
+  </style>
+  <style>
+    /* Nebula explainer layout */
+    .nebula-explainer { max-width: 1100px; margin: 0 auto 28px; }
+    .definition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .definition-card { background: rgba(10,10,20,0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px; color: #f1f5f9; transition: transform .25s ease, border-color .25s ease; }
+    .definition-card:hover { transform: translateY(-4px); border-color: rgba(0,150,255,.35); }
+    .definition-card h3 { margin: 0 0 8px; font-size: 1.05rem; color: #9ecfff; letter-spacing: .2px; }
+    .definition-card p { margin: 0; line-height: 1.55; }
+    .checklist { list-style: none; padding: 0; margin: 8px 0 0; }
+    .checklist li { position: relative; padding-left: 22px; margin: 6px 0; color: #cfe9ff; }
+    .checklist li::before { content: "✔"; position: absolute; left: 0; top: 0; color: #6ee7ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul>
+        <li><a href="index.html#overview">Home</a></li>
+        <li><a href="index.html#interactive-cards">Interactive</a></li>
+        <li><a href="index.html#planets">Planets</a></li>
+        <li><a href="planets.html#stars">Stars</a></li>
+        <li><a href="#galaxies">Galaxies</a></li>
+        <li><a href="#nebulae">Nebulae</a></li>
+        <li><a href="index.html#blackholes">Black Holes</a></li>
+        <li><a href="index.html#comets">Comets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top" class="planet-details-page fade-in visible">
+    <a class="back-link" href="index.html#planets">⬅ Back to Home</a>
+    <h1 class="page-title">Galaxies</h1>
+    <p class="page-subtitle">Quick facts about some of the most famous galaxies.</p>
+
+    <div class="toc">
+      <a href="#milky-way">Milky Way</a>
+      <a href="#andromeda">Andromeda (M31)</a>
+      <a href="#triangulum">Triangulum (M33)</a>
+      <a href="#m51">Whirlpool (M51)</a>
+      <a href="#sombrero">Sombrero (M104)</a>
+    </div>
+
+    <section class="planet-cards">
+      <article id="milky-way" class="planet-card">
+        <header>
+          <h2 class="planet-name">Milky Way</h2>
+          <div class="planet-meta">Our Home • Barred Spiral</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/milky way.jpg" alt="Milky Way galaxy band across the night sky" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Our galaxy — a vast barred spiral with a supermassive black hole at its center. The Sun orbits once every ~230 million years.
+          <ul class="facts">
+            <li>Diameter ~100,000 light‑years; contains hundreds of billions of stars.</li>
+            <li>We live in the Orion Arm, a minor spiral arm.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="andromeda" class="planet-card">
+        <header>
+          <h2 class="planet-name">Andromeda (M31)</h2>
+          <div class="planet-meta">Nearest Large Galaxy • Future Merger</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/andromeda.jpg" alt="Andromeda Galaxy (M31) spiral" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The closest big neighbor to the Milky Way. On track to merge with us in ~4–5 billion years.
+          <ul class="facts">
+            <li>About 2.5 million light‑years away — visible to the naked eye in dark skies.</li>
+            <li>Larger than the Milky Way with a bright central bulge.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="triangulum" class="planet-card">
+        <header>
+          <h2 class="planet-name">Triangulum (M33)</h2>
+          <div class="planet-meta">Local Group • Star‑Forming</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/galaxy 2.jpg" alt="Triangulum Galaxy (M33) representative spiral" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A smaller spiral galaxy in our Local Group. Popular with astrophotographers for its detailed star‑forming regions.
+          <ul class="facts">
+            <li>Roughly 3 million light‑years away.</li>
+            <li>Home to the bright HII region NGC 604.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="m51" class="planet-card">
+        <header>
+          <h2 class="planet-name">Whirlpool Galaxy (M51)</h2>
+          <div class="planet-meta">Grand‑Design Spiral • Interacting Pair</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/galaxy.jpg" alt="Whirlpool Galaxy (M51) grand-design spiral" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Famous for its clean spiral arms enhanced by interaction with its companion galaxy.
+          <ul class="facts">
+            <li>About 23 million light‑years away in Canes Venatici.</li>
+            <li>Companion NGC 5195 distorts and sharpens its arms.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="sombrero" class="planet-card">
+        <header>
+          <h2 class="planet-name">Sombrero Galaxy (M104)</h2>
+          <div class="planet-meta">Edge‑On View • Prominent Dust Lane</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/sombrero galaxy.jpg" alt="Sombrero Galaxy (M104) edge-on with dust lane" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Known for its bright central bulge and a dramatic dust lane giving it a hat‑like appearance.
+          <ul class="facts">
+            <li>~29 million light‑years away in Virgo.</li>
+            <li>Best seen in medium to large telescopes under dark skies.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- Nebula: structured explanation & tips -->
+    <section class="interactive-cards-section nebula-explainer" aria-label="What is a Nebula?">
+      <h2 class="cards-title">What is a Nebula?</h2>
+      <div class="definition-grid">
+        <article class="definition-card fade-in">
+          <h3>In Short</h3>
+          <p>Nebulae are vast clouds of gas and dust in space. Some are stellar nurseries where stars are born; others are the glowing remains of dying stars.</p>
+        </article>
+        <article class="definition-card fade-in">
+          <h3>Types</h3>
+          <ul class="checklist">
+            <li><b>Emission:</b> glow red from ionized hydrogen (H‑alpha).</li>
+            <li><b>Reflection:</b> appear blue from scattered starlight.</li>
+            <li><b>Dark:</b> dense dust blocks background light.</li>
+            <li><b>Planetary:</b> shells from Sun‑like dying stars.</li>
+            <li><b>Supernova remnants:</b> expanding debris from stellar explosions.</li>
+          </ul>
+        </article>
+        <article class="definition-card fade-in">
+          <h3>Scale, Color & Observing</h3>
+          <ul class="checklist">
+            <li><b>Scale:</b> can span many light‑years (Orion ~24 ly wide).</li>
+            <li><b>Why colorful?</b> Long exposures map faint light; colors often represent different gases.</li>
+            <li><b>Observation tips:</b> seek dark skies; use UHC/OIII filters for emission nebulae.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="planet-intro" style="max-width: 800px;">
+      <h2 class="page-title" style="margin-top: 12px;">How to Observe</h2>
+      <p>Use dark skies and a star chart or app. A small telescope reveals more structure; long-exposure images show even more detail.</p>
+    </section>
+
+    <h1 id="nebulae" class="page-title" style="margin-top: 36px;">Famous Nebulae</h1>
+    <p class="page-subtitle">Spectacular clouds of gas and dust — stellar birthplaces and stellar remains.</p>
+
+    <div class="toc">
+      <a href="#orion">Orion (M42)</a>
+      <a href="#eagle">Eagle (M16)</a>
+      <a href="#crab">Crab (M1)</a>
+      <a href="#ring">Ring (M57)</a>
+      <a href="#carina">Carina</a>
+    </div>
+
+    <section class="planet-cards">
+      <article id="orion" class="planet-card">
+        <header>
+          <h2 class="planet-name">Orion Nebula (M42)</h2>
+          <div class="planet-meta">Star Nursery • Bright Emission Nebula</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/Orion%20nebula.jpg" alt="Orion Nebula (M42) - representative image" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A nearby stellar nursery where new stars form within glowing hydrogen clouds.
+          <ul class="facts">
+            <li>~1,300 light‑years away; visible to the naked eye in Orion’s sword.</li>
+            <li>Home to the young Trapezium star cluster.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="eagle" class="planet-card">
+        <header>
+          <h2 class="planet-name">Eagle Nebula (M16)</h2>
+          <div class="planet-meta">Pillars of Creation • Star‑Forming</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/Eagle%20nebula.jpg" alt="Eagle Nebula (M16) - star-forming region (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Famous for towering columns of gas where stars are actively forming.
+          <ul class="facts">
+            <li>~7,000 light‑years away in the constellation Serpens.</li>
+            <li>Made iconic by Hubble’s “Pillars of Creation” image.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="crab" class="planet-card">
+        <header>
+          <h2 class="planet-name">Crab Nebula (M1)</h2>
+          <div class="planet-meta">Supernova Remnant • Pulsar</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/Crab%20nebula.jpg" alt="Crab Nebula (M1) - supernova remnant (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The expanding remains of a star that exploded in 1054 CE, with a rapidly spinning neutron star at its heart.
+          <ul class="facts">
+            <li>~6,500 light‑years away in Taurus.</li>
+            <li>Emits across radio to gamma‑ray wavelengths.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="ring" class="planet-card">
+        <header>
+          <h2 class="planet-name">Ring Nebula (M57)</h2>
+          <div class="planet-meta">Planetary Nebula • Dying Sun‑like Star</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/Ring%20nebula.jpg" alt="Ring Nebula (M57) - planetary nebula (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A glowing shell of gas ejected by a Sun‑like star at the end of its life, appearing as a bright ring.
+          <ul class="facts">
+            <li>~2,300 light‑years away in Lyra.</li>
+            <li>Compact and bright — a good target for small telescopes.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="carina" class="planet-card">
+        <header>
+          <h2 class="planet-name">Carina Nebula</h2>
+          <div class="planet-meta">Massive Complex • Southern Sky</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/Carina%20nebula.jpg" alt="Carina Nebula - pillars and star-forming regions (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A colossal region with dramatic pillars and massive stars shaping it, including the unstable Eta Carinae.
+          <ul class="facts">
+            <li>~7,500 light‑years away in Carina (best from southern latitudes).</li>
+            <li>Home to clusters Trumpler 14 and 16.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="astronomy-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 class="footer-logo">About Us</h3>
+        <p class="footer-description">Exploring the wonders of space through interactive experiences and educational content.</p>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">Back to Home</h4>
+        <a class="subscribe-button" href="index.html">Return to Index</a>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">Connect</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><span class="icon">🌐</span></a>
+          <a href="#" aria-label="Instagram"><span class="icon">📸</span></a>
+          <a href="#" aria-label="Twitter"><span class="icon">🐦</span></a>
+          <a href="#" aria-label="YouTube"><span class="icon">▶️</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Universe in a Nutshell. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comets & Black Holes • Universe in a Nutshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
+  <style>
+    /* Match the details layout used on planets/galaxies */
+    .planet-details-page { max-width: 1100px; margin: 32px auto; padding: 0 16px 48px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: #00ffe1; text-decoration: none; font-weight: 600; border: 1px solid rgba(0,255,225,0.35); padding: 8px 14px; border-radius: 999px; backdrop-filter: blur(6px); background: rgba(0,0,0,0.35); transition: transform .2s ease, background .2s ease; }
+    .back-link:hover { transform: translateY(-2px); background: rgba(0,0,0,0.5); }
+    .page-title { font-family: 'Space Grotesk','Inter',sans-serif; font-size: 2.2rem; font-weight: 700; text-align: center; margin: 16px 0 8px; color: #ff4444; text-shadow: 0 0 12px rgba(255,68,68,.45); }
+    .page-subtitle { text-align: center; color: #e0e7ff; margin-bottom: 28px; }
+    .planet-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .planet-card { background: rgba(10,10,20,0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .planet-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(0,150,255,.4); }
+    .planet-card header { padding: 14px 16px 8px; }
+    .planet-name { font-weight: 700; font-size: 1.2rem; letter-spacing: .3px; }
+    .planet-meta { font-size: .9rem; color: #9ecfff; margin-top: 2px; }
+    /* Inline media for cards */
+    .planet-media { width: 100%; overflow: hidden; }
+    .planet-media img { width: 100%; height: 180px; object-fit: cover; display: block; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .planet-body { padding: 0 16px 16px; color: #f1f5f9; line-height: 1.5; }
+    .facts { margin-top: 8px; font-size: .95rem; color: #cde9ff; }
+    .facts li { margin: 4px 0; }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0 26px; }
+    .toc a { color: #fff; text-decoration: none; font-size: .95rem; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+    .toc a:hover { background: rgba(0,150,255,0.2); border-color: rgba(0,150,255,0.35); }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul>
+        <li><a href="index.html#overview">Home</a></li>
+        <li><a href="index.html#interactive-cards">Interactive</a></li>
+        <li><a href="index.html#planets">Planets</a></li>
+        <li><a href="planets.html#stars">Stars</a></li>
+        <li><a href="galaxies.html#galaxies">Galaxies</a></li>
+        <li><a href="galaxies.html#nebulae">Nebulae</a></li>
+        <li><a href="#comets">Comets</a></li>
+        <li><a href="#blackholes">Black Holes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top" class="planet-details-page fade-in visible">
+    <a class="back-link" href="index.html#interactive-cards">⬅ Back to Home</a>
+
+    <h1 id="comets" class="page-title">Famous Comets</h1>
+    <p class="page-subtitle">Icy visitors that grow glowing tails when they heat near the Sun.</p>
+
+    <div class="toc">
+      <a href="#halley">1P/Halley</a>
+      <a href="#halebopp">Hale–Bopp</a>
+      <a href="#neowise">NEOWISE</a>
+      <a href="#67p">67P/Churyumov–Gerasimenko</a>
+      <a href="#encke">2P/Encke</a>
+    </div>
+
+    <section class="planet-cards">
+      <article id="halley" class="planet-card">
+        <header>
+          <h2 class="planet-name">1P/Halley</h2>
+          <img src="Image/1p halley.jpg" alt="Comet Halley (1P/Halley) - representative image" loading="lazy" decoding="async">
+          <div class="planet-meta">Periodic • ~76‑Year Return</div>
+        </header>
+        <div class="planet-body">
+          The most famous periodic comet, last seen in 1986 and due again in 2061.
+          <ul class="facts">
+            <li>Source of the Eta Aquariids and Orionids meteor showers.</li>
+            <li>Observed for millennia; predicted by Edmond Halley.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="halebopp" class="planet-card">
+        <header>
+          <h2 class="planet-name">Comet Hale–Bopp (C/1995 O1)</h2>
+          <img src="Image/Hale-Bopp.jpg" alt="Comet Hale–Bopp - representative image" loading="lazy" decoding="async">
+          <div class="planet-meta">Great Comet • Extremely Bright</div>
+        </header>
+        <div class="planet-body">
+          A spectacular naked‑eye comet in 1997, visible for a record 18 months.
+          <ul class="facts">
+            <li>Large nucleus and high activity made it prominent worldwide.</li>
+            <li>One of the most observed comets of the 20th century.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="neowise" class="planet-card">
+        <header>
+          <h2 class="planet-name">Comet NEOWISE (C/2020 F3)</h2>
+          <div class="planet-meta">Recent Visitor • Twin Tails</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/comet neowise.jpg" alt="Comet NEOWISE (C/2020 F3) - representative image" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A bright 2020 comet visible from both hemispheres with dust and ion tails.
+          <ul class="facts">
+            <li>Period ~6,800 years; discovered by NASA’s NEOWISE mission.</li>
+            <li>Produced photogenic twilight views during northern summer.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="67p" class="planet-card">
+        <header>
+          <h2 class="planet-name">67P/Churyumov–Gerasimenko</h2>
+          <div class="planet-meta">Rosetta Mission • Bilobed Nucleus</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/67p churyumov.jpg" alt="Comet 67P/Churyumov–Gerasimenko - representative image" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Target of ESA’s Rosetta spacecraft, which orbited and deployed the Philae lander.
+          <ul class="facts">
+            <li>Peanut‑shaped nucleus; jets and surface changes observed up close.</li>
+            <li>Period ~6.5 years; source of detailed comet science.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="encke" class="planet-card">
+        <header>
+        <h2 class="planet-name">2P/Encke</h2>
+        <img src="Image/2p encke.jpg" alt="Comet 2P/Encke - representative image" loading="lazy" decoding="async">
+        <div class="planet-meta">Shortest Known Period • ~3.3 Years</div>
+        </header>
+        <div class="planet-body">
+          A frequently returning comet with a very short orbital period.
+          <ul class="facts">
+            <li>Associated with the Taurid meteor stream.</li>
+            <li>Likely a fragment of a much larger ancient comet.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <h1 id="blackholes" class="page-title" style="margin-top: 36px;">Black Holes</h1>
+    <p class="page-subtitle">Regions where gravity is so strong that not even light can escape.</p>
+
+    <div class="toc">
+      <a href="#sagA">Sagittarius A*</a>
+      <a href="#m87star">M87*</a>
+      <a href="#cygx1">Cygnus X‑1</a>
+      <a href="#v404">V404 Cygni</a>
+      <a href="#mergers">Merging Black Holes</a>
+    </div>
+
+    <section class="planet-cards">
+      <article id="sagA" class="planet-card">
+        <header>
+          <h2 class="planet-name">Sagittarius A*</h2>
+          <div class="planet-meta">Supermassive • Milky Way Center</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image\sagittarius a .jpg" alt="Sagittarius A* context at Milky Way center (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A ~4 million‑solar‑mass black hole at the heart of our galaxy, imaged by the Event Horizon Telescope.
+          <ul class="facts">
+            <li>Its gravity steers stars in tight orbits near the galactic center.</li>
+            <li>Radio bright; variable on hour‑long timescales.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="m87star" class="planet-card">
+        <header>
+          <h2 class="planet-name">M87*</h2>
+          <div class="planet-meta">First BH Image • Powerful Jet</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/m87.jpg" alt="M87* black hole vicinity (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          The first black hole ever imaged (2019), in galaxy M87; launches a relativistic jet thousands of light‑years long.
+          <ul class="facts">
+            <li>Mass ~6.5 billion Suns; distance ~55 million light‑years.</li>
+            <li>Shadow size matched general relativity predictions.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="cygx1" class="planet-card">
+        <header>
+          <h2 class="planet-name">Cygnus X‑1</h2>
+          <div class="planet-meta">Stellar‑Mass • X‑ray Binary</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/cygnus x-1.jpg" alt="Cygnus X-1 accretion environment (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          One of the first strong black hole candidates, siphoning matter from a massive companion star and emitting X‑rays.
+          <ul class="facts">
+            <li>Mass ~20 Suns; distance ~7,200 light‑years.</li>
+            <li>Accretion disk and jets produce variable X‑ray signals.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="v404" class="planet-card">
+        <header>
+          <h2 class="planet-name">V404 Cygni</h2>
+          <div class="planet-meta">Stellar‑Mass • Outbursts</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/v404 cygni.jpg" alt="V404 Cygni outburst environment (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          A black hole binary known for dramatic flares as it devours material from its companion.
+          <ul class="facts">
+            <li>Shows rapid, repeated outbursts observed across wavelengths.</li>
+            <li>Evidence of precessing jets in some episodes.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="mergers" class="planet-card">
+        <header>
+          <h2 class="planet-name">Merging Black Holes</h2>
+          <div class="planet-meta">Gravitational Waves • LIGO/Virgo</div>
+        </header>
+        <div class="planet-media">
+          <img src="Image/merging black holes.jpg" alt="Merging black holes visualization (representative)" loading="lazy" decoding="async">
+        </div>
+        <div class="planet-body">
+          Pairs of black holes spiral together and merge, sending ripples in spacetime detected as gravitational waves.
+          <ul class="facts">
+            <li>First detection (GW150914) announced in 2016.</li>
+            <li>Reveals populations of heavy stellar black holes.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="astronomy-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Universe in a Nutshell. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
