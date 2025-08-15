@@ -1276,6 +1276,107 @@ footer {
     margin: 0 20px;
   }
 
+  /* --- ABOUT PAGE: TEAM SECTION --- */
+  .team-section {
+    max-width: 1100px;
+    margin: 32px auto;
+    padding: 0 16px;
+  }
+
+  .team-grid-pro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 14px;
+  }
+
+  .team-card {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    border-color: rgba(0, 255, 225, 0.35);
+  }
+
+  .team-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .team-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e6e8ff;
+    margin-bottom: 4px;
+    letter-spacing: 0.2px;
+  }
+
+  .team-role {
+    font-size: 0.95rem;
+    color: #9aa0c6;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .team-bio {
+    color: #cfd7ff;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .team-avatar { width: 120px; height: 120px; }
+  }
+
+  /* --- ABOUT PAGE: MISSION SECTION --- */
+  .mission-section {
+    margin-top: 24px;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .mission-card {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: left;
+    backdrop-filter: blur(6px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .mission-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    border-color: rgba(77, 157, 224, 0.35);
+  }
+
+  .mission-card .card-title {
+    margin: 0 0 8px;
+  }
+
 /* --- CONTACT PAGE --- */
 .contact-hero {
   text-align: center;
