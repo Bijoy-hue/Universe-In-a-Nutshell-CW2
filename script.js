@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+
   // Cookie helpers
   function setCookie(name, value, { days = 365, path = "/", sameSite = "Lax", secure = false } = {}) {
     const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
@@ -290,6 +291,7 @@ if (window.jQuery) {
   const signupDOB = document.getElementById('signup-dob');
   const formMessage = document.getElementById('form-message');
   const signupToggle = document.getElementById('signup-toggle');
+  const dobError = document.getElementById('signup-dob-error');
 
   // Form is already hidden via inline style in HTML, no need to set it again
   // This avoids conflicts between inline styles and JS style manipulation
@@ -304,6 +306,14 @@ if (window.jQuery) {
       if (saved) el.value = saved;
       el.addEventListener('input', () => localStorage.setItem(id, el.value));
     });
+  }
+
+  // Set DOB max to yesterday (so today is not selectable)
+  if (signupDOB) {
+    const now = new Date();
+    const yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    const yStr = yesterday.toISOString().slice(0, 10);
+    signupDOB.setAttribute('max', yStr);
   }
 
   // Validation patterns
@@ -361,25 +371,29 @@ if (window.jQuery) {
     });
   }
 
-  // DOB validation
+  // DOB validation (must be strictly before today)
   if (signupDOB) {
     signupDOB.addEventListener('input', function() {
       const dob = signupDOB.value;
-      
       if (dob === "") {
         signupDOB.classList.remove('valid', 'invalid');
+        signupDOB.removeAttribute('aria-invalid');
+        if (dobError) dobError.textContent = '';
+        return;
+      }
+      const selectedDate = new Date(dob);
+      const now = new Date();
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      if (!isNaN(selectedDate.getTime()) && selectedDate < todayStart) {
+        signupDOB.classList.remove('invalid');
+        signupDOB.classList.add('valid');
+        signupDOB.setAttribute('aria-invalid', 'false');
+        if (dobError) dobError.textContent = '';
       } else {
-        // Check if date is valid and not in the future
-        const selectedDate = new Date(dob);
-        const today = new Date();
-        
-        if (selectedDate <= today) {
-          signupDOB.classList.remove('invalid');
-          signupDOB.classList.add('valid');
-        } else {
-          signupDOB.classList.remove('valid');
-          signupDOB.classList.add('invalid');
-        }
+        signupDOB.classList.remove('valid');
+        signupDOB.classList.add('invalid');
+        signupDOB.setAttribute('aria-invalid', 'true');
+        if (dobError) dobError.textContent = 'Date of birth must be before today.';
       }
     });
   }
@@ -433,12 +447,22 @@ if (window.jQuery) {
       if (dob === "") {
         isValid = false;
         signupDOB.classList.add('invalid');
+        signupDOB.setAttribute('aria-invalid', 'true');
+        if (dobError) dobError.textContent = 'Please enter your date of birth.';
       } else {
         const selectedDate = new Date(dob);
-        const today = new Date();
-        if (selectedDate > today) {
+        const now = new Date();
+        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        if (!(selectedDate < todayStart)) {
           isValid = false;
           signupDOB.classList.add('invalid');
+          signupDOB.setAttribute('aria-invalid', 'true');
+          if (dobError) dobError.textContent = 'Date of birth must be before today.';
+        } else {
+          signupDOB.classList.remove('invalid');
+          signupDOB.classList.add('valid');
+          signupDOB.setAttribute('aria-invalid', 'false');
+          if (dobError) dobError.textContent = '';
         }
       }
       
@@ -466,6 +490,8 @@ if (window.jQuery) {
         signupEmail.classList.remove('valid');
         signupMobile.classList.remove('valid');
         signupDOB.classList.remove('valid');
+        signupDOB.removeAttribute('aria-invalid');
+        if (dobError) dobError.textContent = '';
         
         // Hide form after submission
         if (window.jQuery) {

@@ -29,7 +29,7 @@
                 <li><a href="galaxies.html#nebulae">Nebulae</a></li>
                 <li><a href="comets-blackholes.html#blackholes">Black Holes</a></li>
                 <li><a href="comets-blackholes.html#comets">Comets</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About us</a></li>
                 
             </ul>
         </nav>
@@ -292,7 +292,8 @@
                     <input type="text" id="signup-name" placeholder="Full Name" required>
                     <input type="email" id="signup-email" placeholder="Email Address" required>
                     <input type="tel" id="signup-mobile" placeholder="Mobile Number" required>
-                    <input type="date" id="signup-dob" required>
+                    <input type="date" id="signup-dob" required aria-describedby="signup-dob-error">
+                    <small id="signup-dob-error" class="field-error" aria-live="polite"></small>
                     <button type="submit" class="subscribe-button">Submit</button>
                 </form>
                 <div class="form-message" id="form-message"></div>
