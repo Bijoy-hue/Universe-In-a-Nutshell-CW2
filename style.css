@@ -97,13 +97,7 @@ nav ul li a {
     overflow: hidden;
 }
 
-/* Active page highlight using aria-current */
-nav ul li a[aria-current="page"] {
-  background: rgba(0, 255, 225, 0.22);
-  border-color: rgba(0, 255, 225, 0.55);
-  color: #00ffe1;
-  box-shadow: 0 8px 25px rgba(0, 255, 225, 0.22);
-}
+
 
 nav ul li a:hover::before {
     left: 100%;
@@ -441,8 +435,9 @@ section {
 }
 
 input {
-    display: none;
+  display: none;
 }
+
 
 input:checked + label {
     width: 600px;
@@ -471,6 +466,29 @@ input:checked + label .description {
     animation: fadeInUp 2s ease-out 1s backwards;
 }
 
+/* Old footer styles removed to prevent conflict with .site-footer */
+/*
+footer {
+    background-color: #000;
+    padding: 2em;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: #ccc;
+    position: fixed;
+    width: 100%;
+}
+*/
+
+/*
+@media screen and (max-width: 1200px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+*/
 
 .footer-column {
     flex: 1;
@@ -1094,32 +1112,12 @@ input:checked + label .description {
     box-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
   }
 
-  .signup-form .field-error {
-    color: #ff6b6b;
-    font-size: 0.85rem;
-    line-height: 1.2;
-    min-height: 1em;
-    margin-top: -4px;
-    margin-bottom: 4px;
-    display: block;
-  }
-
   .signup-form input[type="date"] {
     color-scheme: dark;
   }
 
   .signup-form input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
-  }
-
-  @media (max-width: 480px) {
-    .signup-form {
-      gap: 10px;
-    }
-    .signup-form input,
-    .signup-form .subscribe-button {
-      width: 100%;
-    }
   }
 
   .newsletter-form {
@@ -1271,107 +1269,6 @@ input:checked + label .description {
     border-top: 1px solid #2a2a5a;
     padding-top: 20px;
     margin: 0 20px;
-  }
-
-  /* --- ABOUT PAGE: TEAM SECTION --- */
-  .team-section {
-    max-width: 1100px;
-    margin: 32px auto;
-    padding: 0 16px;
-  }
-
-  .team-grid-pro {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
-    margin-top: 14px;
-  }
-
-  .team-card {
-    background: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    padding: 16px;
-    text-align: center;
-    backdrop-filter: blur(6px);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  .team-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
-    border-color: rgba(0, 255, 225, 0.35);
-  }
-
-  .team-avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.04);
-  }
-
-  .team-name {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #e6e8ff;
-    margin-bottom: 4px;
-    letter-spacing: 0.2px;
-  }
-
-  .team-role {
-    font-size: 0.95rem;
-    color: #9aa0c6;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-
-  .team-bio {
-    color: #cfd7ff;
-    font-size: 0.95rem;
-    line-height: 1.45;
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .team-avatar { width: 120px; height: 120px; }
-  }
-
-  /* --- ABOUT PAGE: MISSION SECTION --- */
-  .mission-section {
-    margin-top: 24px;
-  }
-
-  .mission-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .mission-card {
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    padding: 16px;
-    text-align: left;
-    backdrop-filter: blur(6px);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  .mission-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
-    border-color: rgba(77, 157, 224, 0.35);
-  }
-
-  .mission-card .card-title {
-    margin: 0 0 8px;
   }
 
 /* --- CONTACT PAGE --- */
@@ -1988,4 +1885,24 @@ main {
   .category-title { font-size: 1.6rem; }
   .category-title::after { width: 64px; }
   .category-subtitle { font-size: 0.95rem; padding: 8px 12px; }
+}
+
+/* --- FIX FORM INPUTS BROKEN BY GLOBAL input {display:none;} --- */
+
+/* Restore normal form fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+input[type="number"],
+textarea {
+  display: block;          /* or inline-block */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Keep only the interactive cards' radio buttons hidden */
+.interactive-cards-section input[type="radio"] {
+  display: none;
 }
